@@ -5,9 +5,10 @@ import sys
 def open_email_connection(smtp_host, smtp_port, smtp_user, smtp_pw):
     """Open an email server connection."""
     try:
+        print smtp_host + " " + smtp_port + " " + smtp_user + " " + smtp_pw
         server = smtplib.SMTP_SSL(smtp_host, smtp_port)
         server.ehlo()
-        server.starttls()
+        #server.starttls()
         server.login(smtp_user, smtp_pw)
     except:
         print "Cannot open connection to email server."
@@ -18,7 +19,7 @@ def open_email_connection(smtp_host, smtp_port, smtp_user, smtp_pw):
 def close_email_connection(email_server):
     "Close an email server connection."""
     test_email_connection(email_server) 
-    email_server.quit()
+    email_server.close()
 
 def send_email(email_server, email_sender, email_recipient, email_message):
     """Send a message and close the connection to clean up."""
