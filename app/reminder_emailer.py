@@ -5,7 +5,6 @@ import sys
 def open_email_connection(smtp_host, smtp_port, smtp_user, smtp_pw):
     """Open an email server connection."""
     try:
-        #print smtp_host + " " + smtp_port + " " + smtp_user + " " + smtp_pw
         server = smtplib.SMTP_SSL(smtp_host, smtp_port)
         server.ehlo()
         server.login(smtp_user, smtp_pw)
